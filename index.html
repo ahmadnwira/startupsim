@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>startup sim</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="app">
+        <form class="paramters">
+            <div class="input">
+                <label for="makeMoney">p(earning):</label>
+                <input type="number" min="1" id="makeMoney" value="1">
+            </div>
+
+            <div class="input">
+                <label for="loseMoney">p(loosing):</label>
+                <input type="number" min="1" id="loseMoney" value="33">
+            </div>
+
+            <div class="input">
+                <label for="getFunded">p(fundraising):</label>
+                <input type="number" min="0" max="20" id="getFunded" value="1">
+            </div>
+
+
+            <div class="input">
+                <label for="inflation">Inflation rate:</label>
+                <input type="number" min="1" max="20" id="inflation" value="10">
+            </div>
+
+            <div class="input">
+                <label for="rent">rent:</label>
+                <input type="number" min="3000" id="rent" value="3000">
+            </div>
+
+            <div class="input">
+                <label for="fund">intial fund:</label>
+                <input type="number" min="50000" id="fund" value="100000">
+            </div>
+
+            <div class="input">
+                <label for="trials">tirals:</label>
+                <input type="number" min="100" max="500000" id="trials" value="100">
+            </div>
+
+            <div class="input">
+                <input type="submit" value="start sim">
+                <div>
+                    <label for="seed"> make descions:</label>
+                    <input type="checkbox">
+                </div>
+            </div>
+            <p class="result">How Long Will Your Company Stay in Business?</p>
+        </form>
+
+
+        <ul class="list">
+            <li class="list__head">Take Action</li>
+            <li class="list__item action" id='feature'>new feature</li>
+            <li class="list__item action" id='pivot'>pivot</li>
+            <li class="list__item action" id='ico'>initial coin offering</li>
+        </ul>
+
+        <ul class="list">
+            <li class="list__head">State</li>
+            <li class="list__item" id="displayFund">Fund: </li>
+            <li class="list__item" id="displayDays">Days: </li>
+        </ul>
+
+        <ul class="list log">
+            <li class="list__head">Log</li>
+        </ul>
+
+    </div>
+
+    <script src="./dist/bundle.js"></script>
+</body>
+
+</html>
