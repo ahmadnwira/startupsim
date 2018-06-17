@@ -36,8 +36,16 @@ let step = (params) => {
     };
 };
 
+let appendLi = (ul, msg) => {
+    const li = document.createElement("li");
+    li.classList.add("list__item","msg");
+    li.appendChild(document.createTextNode(msg));
+    ul.appendChild(li);
+  }
+
 export {
     getMean,
     getSD,
-    step
+    step,
+    appendLi
 };

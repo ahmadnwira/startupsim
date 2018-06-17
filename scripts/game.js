@@ -1,10 +1,10 @@
-import { step } from './utils';
+import { step, appendLi } from './utils';
 
 export class GameMode {
     constructor() {
         this.f = document.querySelector('#displayFund');
         this.d = document.querySelector('#displayDays');
-
+        this.logList = document.querySelector('.log');
         this.params = {isSet: false };
 
         this.addFeature = this.addFeature.bind(this);
@@ -40,31 +40,40 @@ export class GameMode {
 
     addFeature() {
         if (this.params.isSet || this.params.isSet === undefined) {
+            let msg = 'The new feature failed';
             if (Math.random() <= .3) {
-                this.params.makeMoney += .02;
+                this.params.makeMoney += .05;
+                msg = 'successfull feature p(earning) is up by 5%';
             }
             this.params.fund -= 10000;
+            appendLi(this.logList, msg);
         }
     }
 
     pivot() {
         if (this.params.isSet || this.params.isSet === undefined) {
+            let msg = 'Your pivot failed';
             if (Math.random() <= .6) {
                 this.params.makeMoney += .05;
                 this.params.loseMoney -= .02;
+                msg = 'successfully pivoted p(loosing) is down by 2% & p(earning) is up by 5%';
             }
             this.params.fund -= 10000;
+            appendLi(this.logList, msg);
         }
     }
 
     ico() {
         if (this.params.isSet || this.params.isSet === undefined) {
+            let msg = 'Your ICO failed';
             if (Math.random() <= .01) {
                 this.params.fund += 500000;
                 this.params.loseMoney -= .2;
                 this.params.makeMoney += .1;
+                msg = 'ICO succeeded +500k p(loosing) is down by 2% & p(earning) is up by 1%';
             }
             this.params.fund -= 10000;
+            appendLi(this.logList, msg);
         }
     }
 }

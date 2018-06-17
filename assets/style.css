@@ -1,0 +1,104 @@
+body {
+    box-sizing: border-box;
+    background: #ededed;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.container {
+    width: 85%;
+    max-width: 1920px;
+    margin: 4rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 0 0 3px #cfcfcf;
+}
+
+.col {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: .5rem;
+}
+
+.panner {
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 0 3px #cfcfcf;
+    padding: 1rem;
+}
+
+.panner>img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.input {
+    max-width: 420px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    align-items: baseline;
+    margin: 1rem 2rem;
+}
+
+.result {
+    text-align: center;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list__head {
+    text-align: center;
+    background: #3b3b3b;
+    padding: 1rem;
+    border-radius: 3px 3px 0px 0px;
+    color: #fff;
+}
+
+.list__item {
+    padding: .5rem .25rem;
+    color: #4b4b4b;
+    border-bottom: 1px solid #e9e9e9;
+    text-transform: capitalize;
+}
+
+.action:hover {
+    background: #e2e1e1;
+    cursor: pointer;
+}
+
+.msg {
+    background: #ccc;
+    margin: .5rem;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+@media(min-width:651px) and (max-width:1024px) {
+    .container {
+        width: 95%;
+    }
+    .col {
+        flex-basis: initial;
+        flex-grow: 2;
+        flex-shrink: 1;
+        padding: .5rem;
+    }
+}
+
+@media(max-width:650px) {
+    .container {
+        width: 100%;
+        display: block;
+    }
+    .col {
+        width: 95%;
+    }
+}

@@ -1,4 +1,3 @@
-
 let step = (params) => {
     const rand = Math.random();
     if (rand <= params.makeMoney) {
@@ -18,8 +17,6 @@ let step = (params) => {
         params.fund += 100000;
     };
 };
-
-
 let mcStep = params => {
     while (params.fund > 0) {
         step(params);
@@ -29,21 +26,12 @@ let mcStep = params => {
 };
 
 self.onmessage = e => {
-    const params = {
-        fund: e.data['fund'],
-        makeMoney: e.data['makeMoney'],
-        loseMoney: e.data['loseMoney'],
-        getFunded: .05,
-        rent: e.data['rent'],
-        inflation: e.data['inflation'],
-        days: e.data['days']
-    };
 
-    const trials = e.data['trials'];
+    const trials = e.data.trials;
 
     let exp = [];
     for (let i = 0; i <= trials; i++) {
-        exp.push(mcStep({...params}));
+        exp.push(mcStep({...e.data}));
     }
 
     self.postMessage(exp);
