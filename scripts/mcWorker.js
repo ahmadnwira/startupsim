@@ -17,6 +17,7 @@ let step = (params) => {
         params.fund += 100000;
     };
 };
+
 let mcStep = params => {
     while (params.fund > 0) {
         step(params);

@@ -1,15 +1,15 @@
 import { getMean, getSD } from './utils';
 
 export class MCMode {
-    constructor() {
-        this.result = document.querySelector('.result');
-        this.worker = new Worker('./scripts/mcWorker.js', { type: "module" });
+    constructor(view) {
+        this.v = view;
+
+        this.worker = new Worker('./scripts/mcWorker.js');
 
         this.worker.onmessage = function (e) {
             const mean = getMean(e.data);
             const SD = getSD(e.data, mean).toFixed(3);
-            this.result.innerHTML =
-                `will last for (${(mean-(1.96*SD)).toFixed(0)}-${(mean+(1.96*SD)).toFixed(0)})/days 95% of the time`;
+            view.displayResult(mean, SD);
         }.bind(this);
 
     }
@@ -26,6 +26,6 @@ export class MCMode {
             days: 0
         };
         this.worker.postMessage(p);
-        this.result.innerHTML = "calculating";
+        this.v.displayLoad()
     }
 }

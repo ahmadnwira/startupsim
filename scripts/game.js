@@ -1,23 +1,24 @@
-import { step, appendLi } from './utils';
+import {step} from './utils';
 
 export class GameMode {
-    constructor() {
-        this.f = document.querySelector('#displayFund');
-        this.d = document.querySelector('#displayDays');
-        this.logList = document.querySelector('.log');
-        this.params = {isSet: false };
+    constructor(view) {
+        this.v = view
 
-        this.addFeature = this.addFeature.bind(this);
-        this.pivot = this.pivot.bind(this);
-        this.ico = this.ico.bind(this);
+        this.params = {
+            isSet: false
+        };
+
+        view.bindAddFeature(this.addFeature.bind(this));
+        view.bindPivot(this.pivot.bind(this));
+        view.bindICO(this.ico.bind(this));
     }
 
     gameStep(params) {
         params.days++;
         step(params);
         if (params.fund <= 0) clearInterval(this.gameInterval);
-        this.f.innerHTML = `Fund: ${params.fund}`;
-        this.d.innerHTML = `Day: ${params.days}`;
+        this.v.displayFund(params.fund);
+        this.v.displayDays(params.days);
     }
 
     run(e) {
@@ -46,7 +47,7 @@ export class GameMode {
                 msg = 'successfull feature p(earning) is up by 5%';
             }
             this.params.fund -= 10000;
-            appendLi(this.logList, msg);
+            this.v.displayMessage(msg);
         }
     }
 
@@ -59,7 +60,7 @@ export class GameMode {
                 msg = 'successfully pivoted p(loosing) is down by 2% & p(earning) is up by 5%';
             }
             this.params.fund -= 10000;
-            appendLi(this.logList, msg);
+            this.v.displayMessage(msg);
         }
     }
 
@@ -73,7 +74,7 @@ export class GameMode {
                 msg = 'ICO succeeded +500k p(loosing) is down by 2% & p(earning) is up by 1%';
             }
             this.params.fund -= 10000;
-            appendLi(this.logList, msg);
+            this.v.displayMessage(msg);
         }
     }
 }

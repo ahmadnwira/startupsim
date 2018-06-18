@@ -81,6 +81,12 @@ body {
     border-radius: 5px;
 }
 
+.hint {
+    color: #ff5050;
+    font-size: 14px;
+    font-style: italic;
+}
+
 @media(min-width:651px) and (max-width:1024px) {
     .container {
         width: 95%;
